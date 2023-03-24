@@ -1,51 +1,56 @@
-<div class="d-flex justify-content-center align-items-center">
-  <div class="d-flex justify-content-between w-25">
-    <div class="input m-5">
-      <mat-form-field class="example-full-width w-100">
-        <mat-label>URL</mat-label>
-        <input matInput [(ngModel)]="enteredURL" placeholder="URL" />
-      </mat-form-field>
-    </div>
-    <div class="m-5">
-      <button
-        [disabled]="!enteredURL"
-        (click)="shortenURL()"
-        mat-flat-button
-        color="primary"
-      >
-        Shorten
-      </button>
-    </div>
-  </div>
-</div>
-<div *ngIf="urls$ | async as shortenedURLs">
-  <div
-    class="d-flex flex-column justify-content-center align-items-center"
-    *ngIf="shortenedURLs.url; else emptyState"
-  >
-    <div class="h5 mt-3">
-      Short URL 1:
-      <a href="{{ shortenedURLs?.url?.url?.result?.full_short_link }}">{{
-        shortenedURLs?.url?.url?.result?.short_link
-      }}</a>
-    </div>
-    <div class="h5 mt-3">
-      Short URL 2:
-      <a href="{{ shortenedURLs?.url?.url?.result?.full_short_link2 }}">{{
-        shortenedURLs?.url?.url?.result?.short_link2
-      }}</a>
-    </div>
-    <div class="h5 mt-3">
-      Short URL 3:
-      <a href="{{ shortenedURLs?.url?.url?.result?.full_short_link3 }}">{{
-        shortenedURLs?.url?.url?.result?.short_link3
-      }}</a>
+<section class="content mt-5">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-between w-25 width">
+      <div class="input m-3">
+        <mat-form-field class="example-full-width w-100">
+          <mat-label>URL</mat-label>
+          <input matInput [(ngModel)]="enteredURL" placeholder="URL" />
+        </mat-form-field>
+      </div>
+      <div class="m-3">
+        <button
+          [disabled]="!enteredURL"
+          (click)="shortenURL()"
+          mat-flat-button
+          color="primary"
+        >
+          Shorten
+        </button>
+      </div>
     </div>
   </div>
+  <div *ngIf="urls$ | async as shortenedURLs">
+    <div
+      class="d-flex flex-column justify-content-center align-items-center"
+      *ngIf="shortenedURLs.url; else emptyState"
+    >
+      <div class="h5 mt-3">
+        Short URL 1:
+        <a href="{{ shortenedURLs?.url?.url?.result?.full_short_link }}">{{
+          shortenedURLs?.url?.url?.result?.short_link
+        }}</a>
+      </div>
+      <div class="h5 mt-3">
+        Short URL 2:
+        <a href="{{ shortenedURLs?.url?.url?.result?.full_short_link2 }}">{{
+          shortenedURLs?.url?.url?.result?.short_link2
+        }}</a>
+      </div>
+      <div class="h5 mt-3">
+        Short URL 3:
+        <a href="{{ shortenedURLs?.url?.url?.result?.full_short_link3 }}">{{
+          shortenedURLs?.url?.url?.result?.short_link3
+        }}</a>
+      </div>
+    </div>
 
-  <ng-template #emptyState>
-    <div class="d-flex flex-column justify-content-center align-items-center">
-      <span>Enter a valid URL to be shortened.</span>
-    </div>
-  </ng-template>
-</div>
+    <ng-template #emptyState>
+      <div>
+        <span
+          class="d-flex flex-column justify-content-center align-items-center"
+          >Enter a valid URL to be shortened.</span
+        >
+      </div>
+    </ng-template>
+  </div>
+</section>
